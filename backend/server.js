@@ -27,7 +27,7 @@ connection.connect(err => {
     console.error('MySQL greška: ', err);
     process.exit(1);
   } else {
-    console.log('✅ Povezano s MySQL bazom');
+    console.log(' Povezano s MySQL bazom');
 
     // Automatsko kreiranje tablice ako ne postoji
     const createTableQuery = `
@@ -43,9 +43,9 @@ connection.connect(err => {
 
     connection.query(createTableQuery, (errTable) => {
       if (errTable) {
-        console.error('❌ Greška pri kreiranju tablice:', errTable);
+        console.error(' Greška pri kreiranju tablice:', errTable);
       } else {
-        console.log('✅ Tablica "knjige" je spremna!');
+        console.log(' Tablica "knjige" je spremna!');
       }
     });
   }
@@ -86,9 +86,9 @@ const importBooks = async () => {
       );
     });
 
-    console.log('✅ Import (OpenLibrary) pokrenut/završen');
+    console.log(' Import (OpenLibrary) pokrenut/završen');
   } catch (error) {
-    console.error('❌ Greška pri importu knjiga:', error.message || error);
+    console.error(' Greška pri importu knjiga:', error.message || error);
   }
 };
 
@@ -163,6 +163,6 @@ app.use((req, res) => {
 
 // Pokreni server
 app.listen(PORT, () => {
-  console.log(`🚀 Server radi na http://localhost:${PORT}`);
+  console.log(` Server radi na http://localhost:${PORT}`);
   importBooks();
 });
